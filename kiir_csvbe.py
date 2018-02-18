@@ -41,6 +41,8 @@ def szures(s):
 	s = s.replace("\u032f", "")
 	s = s.replace("\u0361", "")
 	
+	s = s.encode('ascii', 'ignore').decode('utf8')
+	
 	return s
 
 with open("proba.txt") as f:
@@ -59,4 +61,4 @@ with open("data.csv", "w", newline="") as file:
 			writer.writerow({h[0]: i["id"], h[1]:szures(i["name"]), h[2]:szures(i["birth"]), h[3]:szures(i.get("livesin", "")), h[4]:szures(i.get("studwhere", "")), h[5]:i.get("studyear", ""), h[6]:szures(i.get("workwhere", "")), h[7]:szures(i.get("workwhat", ""))})
 		except:
 			db = db + 1
-	print(db)
+			print(db)
